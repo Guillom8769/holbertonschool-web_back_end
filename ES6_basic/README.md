@@ -174,5 +174,38 @@ Vérification finale
 Vous devriez maintenant avoir un environnement Docker configuré avec NodeJS 12.11.x et les dépendances nécessaires pour exécuter et tester votre projet. Vous pouvez vérifier cela en exécutant vos scripts NPM à l'intérieur du conteneur.
 
 
-dans le terminal du contenaire 
+dans le terminal du contenaire si non installé 
 npm install -g jest eslint
+
+
+Exécuter le test dans le conteneur Docker
+
+    Assurez-vous que les fichiers 3-default-parameter.js et 3-main.js sont présents dans votre répertoire de travail.
+
+    Démarrez le conteneur interactif Docker :
+
+    bash
+
+docker run -it --rm -v $(pwd):/usr/src/app mon_projet_es6 /bin/bash
+
+Dans le conteneur, exécutez la commande suivante pour tester les modifications :
+
+bash
+
+    npm run dev 3-main.js
+
+Exemple de session dans le conteneur
+
+Voici comment la session devrait se dérouler dans le conteneur :
+
+bash
+
+root@ab95a025bc48:/usr/src/app# npm run dev 3-main.js
+
+> mon_projet_es6@1.0.0 dev /usr/src/app
+> npx babel-node 3-main.js
+
+142
+56
+41
+
