@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
-""" Change school topics """
-
-import pymongo
+""" NoSQL """
 
 
 def update_topics(mongo_collection, name, topics):
-    """ changes all topics of a school document based on the name """
+    """
+    Changes all topics of a school document based on the name.
 
-    mongo_collection.update_many({"name": name}, {"$set": {"topics": topics}})
-    return mongo_collection
+    Parameters:
+    mongo_collection (pymongo.collection.Collection):
+    The pymongo collection object.
+    name (str): The school name to update.
+    topics (list): The list of topics to set for the school.
+
+    Returns:
+    None
+    """
+    mongo_collection.update_many(
+        {"name": name},
+        {"$set": {"topics": topics}}
+    )

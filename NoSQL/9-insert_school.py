@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
-""" Insert a document in Python """
-
-import pymongo
+""" NoSQL """
 
 
 def insert_school(mongo_collection, **kwargs):
-    """ inserts a new document in a collection based on kwargs """
-    new_doc = mongo_collection.insert_one(kwargs)
-    return new_doc.inserted_id
+    """
+    Inserts a new document into a collection.
+
+    Parameters:
+    mongo_collection (pymongo.collection.Collection):
+    The pymongo collection object.
+    **kwargs: The document fields and values to be inserted.
+
+    Returns:
+    The _id of the newly inserted document.
+    """
+    result = mongo_collection.insert_one(kwargs)
+    return result.inserted_id
